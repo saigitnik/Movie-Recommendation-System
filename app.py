@@ -10,7 +10,7 @@ def fetch_poster(movie_id):
   url = "https://api.themoviedb.org/3/movie/{}?api_key=8265bd1679663a7ea12ac168da84d2e8&language=en-US".format(movie_id)
   response = requests.get(url)
   data = response.json()
-  poster_path = data.get('poster_path')  # Handle potential absence of poster_path
+  poster_path = data.get('poster_path')  
 
   if poster_path:
     full_path = "https://image.tmdb.org/t/p/w500/" + poster_path
@@ -26,18 +26,16 @@ def recommend(cinema, film, similarity):
   recommended_movie_posters = []
   for i in distances[1:6]:
     movie_id = film.iloc[i[0]].movie_id
-    recommended_movie_poster = fetch_poster(movie_id)  # Call fetch_poster function
-    if recommended_movie_poster:  # Only append if poster is found
+    recommended_movie_poster = fetch_poster(movie_id) 
+    if recommended_movie_poster:  
       recommended_movie_names.append(film.iloc[i[0]].title)
       recommended_movie_posters.append(recommended_movie_poster)
 
   return recommended_movie_names, recommended_movie_posters
 
-# Replace these paths with your actual file locations
 film_path = r'C:\Users\Acer\Desktop\innomatics\tmdb\film.pkl'
 similarity_path = r'C:\Users\Acer\Desktop\innomatics\tmdb\similarity.pkl'
 
-# Load movie data and similarity matrix
 try:
   with open(film_path, 'rb') as f:
     film = pickle.load(f)
