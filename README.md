@@ -22,6 +22,8 @@ Open your web browser and go to http://localhost:8501 to access the recommender 
 
 Note: Due to file size limitations on GitHub, the similarity.pkl file containing the cosine similarity matrix is larger than 25MB and cannot be uploaded to this repository. Please contact the project owner for access to this file.
 
+Note: requirements.txt contains both streamlit and flask requirements.
+
 Technologies Used:
 Python
 Flask
