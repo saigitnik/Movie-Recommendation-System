@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      background-image: url('/static/back.png'); /* Replace with your background image path */
+      background-size: cover;
+      background-position: center;
+      height: 100vh; /* Maintain full viewport height */
+      margin: 0;
+      display: flex; /* Use flexbox for layout */
+      flex-direction: column; /* Stack elements vertically */
+      justify-content: center; /* Center elements vertically */
+      align-items: center; /* Center elements horizontally */
+      font-family: Arial, sans-serif; /* Add a basic font for better styling */
+    }
+
+    label {
+      color: white; /* Adjust text color for better visibility on background */
+      font-weight: bold; /* Make label text stand out */
+      margin-bottom: 10px; /* Add some space below label */
+    }
+
+    /* Search bar styles */
+input[type="search"] {
+  width: 300px; /* Maintains width from previous code */
+  height: 30px;
+  padding: 10px; /* Adjust padding to align with button */
+  border: 1px solid #4CAF50; /* Teal border */
+  border-radius: 10px;
+  background-color: #171a21; /* Dark space background */
+  color: #FCE4C4; /* White text for contrast */
+}
+
+/* Submit button styles */
+input[type="submit"] {
+  padding: 10px 20px; /* Maintains padding for better visual alignment */
+  border: none;
+  border-radius: 4px;
+  background-color: #29313b; /* Deep space blue */
+  color: white; /* White text for contrast */
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+/* Optional: Container for flexbox layout (if desired) */
+.search-container {
+  display: flex; /* Enable flexbox for side-by-side arrangement */
+}
+
+  </style>
+</head>
+<body>
+  <form action="/recommend" method="post">
+    <label for="selected_movie">Select a movie:</label>
+    <select name="selected_movie" id="selected_movie">
+      {% for movie in movie_list %}
+        <option value="{{ movie }}">{{ movie }}</option>
+      {% endfor %}
+    </select>
+    <input type="submit" value="Show Recommendation">
+  </form>
+</body>
+</html>
